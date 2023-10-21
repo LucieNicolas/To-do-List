@@ -41,7 +41,6 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
         <Card data-testid="task" key={task.id} className="task-card">
           <Card.Body>
             <Card.Title className="task-title">{task.title}</Card.Title>
-            <Card.Text>{task.description}</Card.Text>
             <Button
               variant="success"
               onClick={() => handleTaskCompletion(task.id)}
