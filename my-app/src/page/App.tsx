@@ -1,12 +1,15 @@
-import React from "react";
-import "../style/App.css";
+import TaskList from "../compo/TaskList";
+import { tasksListData } from "../data/data";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>MyTODO</p>
+      <header>
+        <h1>My TODO List</h1>
+        {/* <img src="../images/logo2.png" alt="logo2" /> */}
+        {/* <i className="fa fa-check" aria-hidden="true"></i> */}
       </header>
+      <TaskList tasksList={tasksListData} />
     </div>
   );
 }
