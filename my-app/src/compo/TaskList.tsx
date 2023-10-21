@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import "../style/TaskList.css";
 
-interface Task {
+export interface Task {
   id: number;
   title: string;
   description: string;
@@ -12,13 +12,14 @@ interface Task {
 
 interface TodoListProps {
   tasksList: Task[];
+  handleIsCompleted: (taskId: number) => void;
 }
 
-const TodoList = ({ tasksList }: TodoListProps) => {
+const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
   const [checkedItems, setCheckedItems] = useState(new Set<number>());
   const [listTask, setListTask] = useState(tasksList);
 
-  const handleIsCompleted = (taskId: number) => {
+  const handleTaskCompletion = (taskId: number) => {
     const newCheckedItems = new Set(checkedItems);
     if (newCheckedItems.has(taskId)) {
       newCheckedItems.delete(taskId);
@@ -29,6 +30,8 @@ const TodoList = ({ tasksList }: TodoListProps) => {
 
     const newTasksList = listTask.filter((task) => task.id !== taskId);
     setListTask(newTasksList);
+
+    handleIsCompleted(taskId);
   };
 
   return (
@@ -42,7 +45,7 @@ const TodoList = ({ tasksList }: TodoListProps) => {
             <Card.Text>{task.description}</Card.Text>
             <Button
               variant="success"
-              onClick={() => handleIsCompleted(task.id)}
+              onClick={() => handleTaskCompletion(task.id)}
               data-testid="completedBtn"
             ></Button>
           </Card.Body>
