@@ -7,7 +7,6 @@ export interface Task {
   id: number;
   title: string;
   description: string;
-  isCompleted: boolean;
 }
 
 interface TodoListProps {
@@ -47,7 +46,9 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
               variant="success"
               onClick={() => handleTaskCompletion(task.id)}
               data-testid="completedBtn"
-            ></Button>
+            >
+              Done
+            </Button>
           </Card.Body>
         </Card>
       ))}
