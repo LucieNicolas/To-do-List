@@ -17,6 +17,7 @@ interface TodoListProps {
 const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
   const [checkedItems, setCheckedItems] = useState(new Set<number>());
   const [listTask, setListTask] = useState(tasksList);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
   const handleTaskCompletion = (taskId: number) => {
     const newCheckedItems = new Set(checkedItems);
@@ -33,6 +34,11 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
     handleIsCompleted(taskId);
   };
 
+  const handleTaskDetails = (taskId: number) => {
+    const task = listTask.find((task) => task.id === taskId);
+    setSelectedTask(task || null);
+  };
+
   return (
     <div>
       {/* Map the task list and render a Card component for each task in the
@@ -47,6 +53,12 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
               data-testid="completedBtn"
             >
               Done
+            </Button>
+            <Button
+              variant="warning"
+              onClick={() => handleTaskDetails(task.id)}
+            >
+              +
             </Button>
           </Card.Body>
         </Card>
