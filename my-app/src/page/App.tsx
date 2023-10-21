@@ -1,29 +1,12 @@
-import TaskList from "../compo/TaskList";
+import React from "react";
+import "../style/App.css";
 
 function App() {
-  const tasksList = [
-    {
-      id: 1,
-      title: "Buy groceries",
-      description: "description1",
-      isCompleted: true,
-    },
-    {
-      id: 2,
-      title: "Finish project",
-      description: "description2",
-      isCompleted: false,
-    },
-  ];
-
   return (
     <div className="App">
-      <header>
-        <h1>My TODO List</h1>
-        {/* <img src="../images/logo2.png" alt="logo2" /> */}
-        {/* <i className="fa fa-check" aria-hidden="true"></i> */}
+      <header className="App-header">
+        <p>MyTODO</p>
       </header>
-      <TaskList tasksList={tasksList} />
     </div>
   );
 }
