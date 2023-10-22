@@ -1,0 +1,13 @@
+.taskTitle {
+  margin-right: "auto";
+}
+
+.card-body {
+  display: "flex";
+  align-items: "center";
+}
+
+.completed-btn {
+  margin-left: 20px;
+  margin-left: "auto";
+}

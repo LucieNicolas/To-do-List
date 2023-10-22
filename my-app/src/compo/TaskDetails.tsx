@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import "../style/TaskDetails.css";
 import { Task } from "./TaskList";
 
 interface TaskDetailsProps {
@@ -10,12 +11,12 @@ const TaskDetails = ({ tasksList }: TaskDetailsProps) => {
   const task = tasksList.find((task) => task.id === parseInt(id!));
 
   if (!task) {
-    return <div>Task not found</div>;
+    return <div className="error">Task not found</div>;
   }
 
   return (
-    <div>
-      <h2>{task.title}</h2>
+    <div className="task-details">
+      <h2 className="task-details-title">TASK : {task.title}</h2>
       <p>{task.description}</p>
     </div>
   );

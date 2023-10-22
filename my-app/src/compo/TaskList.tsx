@@ -41,16 +41,19 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
       list*/}
       {listTask.map((task) => (
         <Card data-testid="task" key={task.id} className="task-card">
-          <Card.Body>
+          <Card.Body className="card-body">
             <Card.Title className="task-title">{task.title}</Card.Title>
+            {/* link to see TaskDetails info with taskId*/}
+            <Link to={`/task/${task.id}`}>View Details</Link>
+            {/* handle task completion*/}
             <Button
               variant="success"
               onClick={() => handleTaskCompletion(task.id)}
+              className="completed-btn"
               data-testid="completedBtn"
             >
               Done
             </Button>
-            <Link to={`/task/${task.id}`}>View Details</Link>
           </Card.Body>
         </Card>
       ))}
