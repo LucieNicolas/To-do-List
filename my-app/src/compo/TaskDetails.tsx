@@ -1,10 +1,18 @@
+import { useParams } from "react-router-dom";
 import { Task } from "./TaskList";
 
 interface TaskDetailsProps {
-  task: Task;
+  tasksList: Task[];
 }
 
-const TaskDetails = ({ task }: TaskDetailsProps) => {
+const TaskDetails = ({ tasksList }: TaskDetailsProps) => {
+  const { id } = useParams<{ id: string }>();
+  const task = tasksList.find((task) => task.id === parseInt(id!));
+
+  if (!task) {
+    return <div>Task not found</div>;
+  }
+
   return (
     <div>
       <h2>{task.title}</h2>
@@ -12,5 +20,4 @@ const TaskDetails = ({ task }: TaskDetailsProps) => {
     </div>
   );
 };
-
 export default TaskDetails;

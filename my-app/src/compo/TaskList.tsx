@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../style/TaskList.css";
 
 export interface Task {
   id: number;
   title: string;
-  description: string;
+  description?: string;
 }
 
 interface TodoListProps {
@@ -34,11 +35,6 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
     handleIsCompleted(taskId);
   };
 
-  const handleTaskDetails = (taskId: number) => {
-    const task = listTask.find((task) => task.id === taskId);
-    setSelectedTask(task || null);
-  };
-
   return (
     <div>
       {/* Map the task list and render a Card component for each task in the
@@ -54,12 +50,7 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
             >
               Done
             </Button>
-            <Button
-              variant="warning"
-              onClick={() => handleTaskDetails(task.id)}
-            >
-              +
-            </Button>
+            <Link to={`/task/${task.id}`}>View Details</Link>
           </Card.Body>
         </Card>
       ))}
