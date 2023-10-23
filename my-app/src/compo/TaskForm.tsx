@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import "./style/TaskForm.css";
 
 interface TaskFormProps {
   onAddTask: (title: string, description: string) => void;

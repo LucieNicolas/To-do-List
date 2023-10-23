@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../style/TaskList.css";
+import TaskForm from "./TaskForm";
 
 export interface Task {
   id: number;
@@ -35,8 +36,19 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
     handleIsCompleted(taskId);
   };
 
+  const handleAddTask = (title: string, description: string) => {
+    const newTask: Task = {
+      id: listTask.length + 1,
+      title: title,
+      description: description,
+    };
+    setListTask([...listTask, newTask]);
+  };
+
   return (
     <div>
+      {/* Render the TaskForm component and add new task to the list*/}
+      <TaskForm onAddTask={handleAddTask} />
       {/* Map the task list and render a Card component for each task in the
       list*/}
       {listTask.map((task) => (
