@@ -18,7 +18,7 @@ describe("TaskDetails component", () => {
     </MemoryRouter>
   );
 
-  it("renders the task details based on the given task ID", () => {
+  it("renders the task details with a given task ID", () => {
     const taskId = "1";
     const task = tasksList.find((task) => task.id === parseInt(taskId))!;
     render(
