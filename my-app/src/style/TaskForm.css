@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  align-items: center;
+  margin: 40px;
+}
+.task-form {
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+.description-input {
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+}
+.title-input {
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+}
+
+.add-task-button {
+  background-color: #0d3158;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
