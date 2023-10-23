@@ -16,7 +16,9 @@ const TaskDetails = ({ tasksList }: TaskDetailsProps) => {
 
   return (
     <div className="task-details">
-      <h2 className="task-details-title">TASK : {task.title}</h2>
+      <h2 className="task-details-title" data-testid="taskDetailsTitle">
+        TASK : {task.title}
+      </h2>
       <p>{task.description}</p>
     </div>
   );
