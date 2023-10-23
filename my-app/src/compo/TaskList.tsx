@@ -42,7 +42,7 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
       title: title,
       description: description,
     };
-    setListTask([...listTask, newTask]);
+    setListTask([newTask, ...listTask]);
   };
 
   return (

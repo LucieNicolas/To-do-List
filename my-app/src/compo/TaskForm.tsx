@@ -13,9 +13,11 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
 
   const handleNewTaskSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onAddTask(newTaskTitle, newTaskDescription);
-    setNewTaskTitle("");
-    setNewTaskDescription("");
+    if (newTaskTitle.trim() !== "") {
+      onAddTask(newTaskTitle, newTaskDescription);
+      setNewTaskTitle("");
+      setNewTaskDescription("");
+    }
   };
 
   return (
@@ -28,6 +30,7 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
             value={newTaskTitle}
             onChange={(event) => setNewTaskTitle(event.target.value)}
             className="title-input"
+            required
           />
           <input
             type="text"
