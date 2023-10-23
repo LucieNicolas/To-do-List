@@ -22,9 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>My TODO List</h1>
-      </header>
+      <header></header>
       <Router>
         <Routes>
           <Route
