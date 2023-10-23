@@ -1,0 +1,14 @@
+.task-details-title {
+  margin-top: 20px;
+}
+
+.task-details {
+  margin-left: 20px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}

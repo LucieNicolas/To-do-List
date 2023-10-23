@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import TaskDetails from "../compo/TaskDetails";
 import TaskList, { Task } from "../compo/TaskList";
 import { tasksListData } from "../data/data";
 
@@ -22,15 +24,25 @@ function App() {
     <div className="App">
       <header>
         <h1>My TODO List</h1>
-        {/* <img src="../images/logo2.png" alt="logo2" /> */}
-        {/* <i className="fa fa-check" aria-hidden="true"></i> */}
       </header>
-      <TaskList
-        tasksList={tasksListData}
-        handleIsCompleted={handleIsCompleted}
-      />
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <TaskList
+                tasksList={tasksList}
+                handleIsCompleted={handleIsCompleted}
+              />
+            }
+          />
+          <Route
+            path="/task/:id"
+            element={<TaskDetails tasksList={tasksList} />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
-
 export default App;
