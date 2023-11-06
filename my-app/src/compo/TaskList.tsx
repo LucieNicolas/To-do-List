@@ -13,7 +13,11 @@ export interface Task {
 
 interface TodoListProps {
   tasksList: Task[];
-  handleIsCompleted: (taskId: number) => void;
+  handleIsCompleted: (
+    taskId: number,
+    title: string,
+    description: string
+  ) => void;
 }
 
 const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
@@ -30,10 +34,13 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
     }
     setCheckedItems(newCheckedItems);
 
+    const task = listTask.find((task) => task.id === taskId);
+    if (task) {
+      handleIsCompleted(taskId, task.title || "", task.description || "");
+    }
+
     const newTasksList = listTask.filter((task) => task.id !== taskId);
     setListTask(newTasksList);
-
-    handleIsCompleted(taskId);
   };
 
   const handleAddTask = (title: string, description: string) => {
@@ -42,7 +49,11 @@ const TodoList = ({ tasksList, handleIsCompleted }: TodoListProps) => {
       title: title,
       description: description,
     };
-    setListTask([newTask, ...listTask]);
+    const updatedTasksList = [newTask, ...listTask];
+    setListTask(updatedTasksList);
+
+    // Store the updated tasks list in local storage
+    localStorage.setItem("tasksList", JSON.stringify(updatedTasksList));
   };
 
   return (
